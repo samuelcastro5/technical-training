@@ -111,6 +111,6 @@ class TestModel(models.Model):
     @api.depends('offer_ids')
     def _get_best_offer(self):
         for rec in self:
-            for r in rec.offer_ids.sorted(key=lambda r: (r.price)):
+            for r in rec.offer_ids.sorted(key=lambda r: (r.price), reverse=True):
                 rec.best_offer = r.price
                 break
