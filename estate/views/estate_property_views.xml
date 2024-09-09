@@ -77,7 +77,7 @@
                                     <field name="date_deadline"/>
                                     <button name="action_confirm" invisible="status" string="" type="object" icon="fa-check"/>
                                     <button name="action_cancel"  invisible="status" string="" type="object" icon="fa-times"/>
-                                    <field name="status" invisible="1"/>
+                                    <field name="status" invisible="1"  column_invisible="True"/>
                                 </tree>
                             </field>
                         </page>
@@ -103,7 +103,7 @@
                 <field name="expected_price"/>
                 <field name="selling_price"/>
                 <field name="available_date" optional="hide"/>
-                <field name="status" invisible="1"/>
+                <field name="status" invisible="1"  column_invisible="True"/>
             </tree>
         </field>
     </record>
