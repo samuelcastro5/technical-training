@@ -1,3 +1,4 @@
+from datetime import datetime, date, timedelta
 from odoo import models,fields,api
 
 class TestModel(models.Model):
@@ -17,6 +18,7 @@ class TestModel(models.Model):
     )
     available_date = fields.Date(
        string="Available From",
+       default = date.today() + timedelta(months=3),
        copy=False,
     )
     expected_price = fields.Float(
@@ -61,6 +63,9 @@ class TestModel(models.Model):
         selection=[
             ('new', "New"),
             ('offer_received', "Offer Received"),
+            ('offer_accepted', "Offer Accepted"),
+            ('sold', "Sold"),
+            ('cancelled', "Cancelled"),
         ],
         string="Status", 
         default='new',

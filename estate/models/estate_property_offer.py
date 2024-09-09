@@ -1,4 +1,5 @@
-from odoo import models,fields
+from odoo import models,fields,api
+from datetime import datetime, date, timedelta
 
 class EstatePropertyOffer(models.Model):
     _name = "estate.property.offer"
@@ -22,5 +23,20 @@ class EstatePropertyOffer(models.Model):
     property_id = fields.Many2one("test.model", string="Property", required=True)
     
     
-    
+    validity = fields.Integer(
+        string='Validity (Days)',  
+        default = 7,
+    )
+
+    date_deadline = fields.Date(
+        string='Validity (Days)',  
+        default= date.today(),
+        compute='_get_date_deadline',  
+    )
+
+    @api.depends('validity')
+    def _get_date_deadline(self):
+        for rec in self:
+            rec.date_deadline =date.today() + timedelta(days=rec.validity)
+
    
