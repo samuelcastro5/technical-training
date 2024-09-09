@@ -39,4 +39,11 @@ class EstatePropertyOffer(models.Model):
         for rec in self:
             rec.date_deadline =date.today() + timedelta(days=rec.validity)
 
-   
+    def action_confirm(self):
+        self.ensure_one()
+    
+    def action_set_done(self):
+        self.ensure_one()
+    
+    def action_cancel(self):
+        self.ensure_one()
