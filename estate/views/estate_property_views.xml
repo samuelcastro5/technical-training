@@ -65,6 +65,31 @@
             </tree>
         </field>
     </record>
+
+    <record id="properties_view_search" model="ir.ui.view">
+        <field name="name">properties.view.search</field>
+        <field name="model">test.model</field>
+        <field name="arch" type="xml">
+            <search>
+                
+                <filter string="Available" name="filter_status" domain="[('status', 'in', ['new','offer_received'])]"/>
+                <filter string="Not active" name="filter_not_active" domain="[('active', '=', False)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Postcode" name="postcode" context="{'group_by': postcode}"/>
+                </group>
+
+                <separator/>
+
+                <field name="name"/>
+                <field name="postcode"/>
+                <field name="expected_price"/>
+                <field name="beedrooms"/>
+                <field name="living_area"/>
+                <field name="facades"/>
+
+            </search>
+        </field>
+    </record>
     
     <record id="properties_action" model="ir.actions.act_window">
         <field name="name">Properties</field>
