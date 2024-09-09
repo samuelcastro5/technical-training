@@ -1,6 +1,9 @@
 from datetime import datetime, date, timedelta
 from odoo import models,fields,api
 from odoo.exceptions import ValidationError
+from logging import getLogger
+
+_logger = getLogger(__name__)
 
 class TestModel(models.Model):
     _name = "test.model"
@@ -152,6 +155,7 @@ class TestModel(models.Model):
     def action_sold(self):
         self.ensure_one()
         self.status='sold'
+        _logger.error("enras")
 
 
     
