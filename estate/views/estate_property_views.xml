@@ -76,8 +76,8 @@
                                     <field name="partner_id"/>
                                     <field name="validity"/>
                                     <field name="date_deadline"/>
-                                    <button name="action_confirm" string="Accept" type="object" icon="fa-check"/>
-                                    <button name="action_cancel" string="Cancel" type="object" icon="fa-times"/>
+                                    <button name="action_confirm" string="" type="object" icon="fa-check"/>
+                                    <button name="action_cancel" string="" type="object" icon="fa-times"/>
                                     <field name="status"/>
                                 </tree>
                             </field>
@@ -139,6 +139,21 @@
                     <group>
                         <field name="name"/>
                     </group>
+
+                    <notebook>
+                        
+                        <page string="Properties">
+                            <field name="property_ids">
+                                <tree string="Registered Properties" create="False">
+                                    <field name="name"/>
+                                    <field name="expected_price"/>
+                                    <field name="status"/>
+                                </tree>
+                            </field>
+                        </page>
+
+
+                    </notebook>
                 </sheet>
             </form>
         </field>
