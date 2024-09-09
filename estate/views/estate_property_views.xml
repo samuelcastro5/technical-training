@@ -67,17 +67,17 @@
                         
                         <page string="Offers">
                             <field name="offer_ids" readonly="status in ['offer_accepted', 'sold','cancelled']" widget="section_and_note_one2many">
-                                <tree string="Registered Offers" readonly="status in ['offer_accepted', 'sold','cancelled']" editable="bottom">
+                                <tree string="Registered Offers" readonly="status in ['offer_accepted', 'sold','cancelled']"  editable="bottom">
                                     <control>
                                         <create name="add_offer_control" string="Add a Offer"/>
                                     </control>
-                                    <field name="price"/>
-                                    <field name="partner_id"/>
-                                    <field name="validity"/>
-                                    <field name="date_deadline"/>
+                                    <field name="price" decoration-success="status == 'accepted'" decoration-danger="status == 'refused'"/>
+                                    <field name="partner_id" decoration-success="status == 'accepted'" decoration-danger="status == 'refused'"/>
+                                    <field name="validity" decoration-success="status == 'accepted'" decoration-danger="status == 'refused'"/>
+                                    <field name="date_deadline" decoration-success="status == 'accepted'" decoration-danger="status == 'refused'"/>
                                     <button name="action_confirm" invisible="status" string="" type="object" icon="fa-check"/>
                                     <button name="action_cancel"  invisible="status" string="" type="object" icon="fa-times"/>
-                                    <field name="status"/>
+                                    <field name="status" decoration-success="status == 'accepted'" decoration-danger="status == 'refused'"/>
                                 </tree>
                             </field>
                         </page>
@@ -95,12 +95,14 @@
         <field name="arch" type="xml">
             <tree string="Properties">
                 <field name="name"/>
+                <field name="property_type_id"/>
                 <field name="postcode"/>
+                <field name="property_tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_edit_color': true}"/>
                 <field name="beedrooms"/>
                 <field name="living_area"/>
                 <field name="expected_price"/>
                 <field name="selling_price"/>
-                <field name="available_date"/>
+                <field name="available_date" option="hide"/>
             </tree>
         </field>
     </record>
