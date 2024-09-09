@@ -67,7 +67,7 @@
                         
                         <page string="Offers">
                             <field name="offer_ids" readonly="status in ['offer_accepted', 'sold','cancelled']" widget="section_and_note_one2many">
-                                <tree string="Registered Offers"   editable="bottom">
+                                <tree string="Registered Offers" readonly="status in ['offer_accepted', 'sold','cancelled']" editable="bottom">
                                     <control>
                                         <create name="add_offer_control" string="Add a Offer"/>
                                     </control>
@@ -102,7 +102,7 @@
                 <field name="living_area"/>
                 <field name="expected_price"/>
                 <field name="selling_price"/>
-                <field name="available_date" option="hide"/>
+                <field name="available_date"/>
             </tree>
         </field>
     </record>
