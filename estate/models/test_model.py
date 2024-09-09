@@ -85,3 +85,9 @@ class TestModel(models.Model):
     salesman_id = fields.Many2one("res.users", string="Salesman",  default=lambda self: self.env.uid)
     buyer_id = fields.Many2one("res.partner", string="Buyer")
     property_tag_ids = fields.Many2many('estate.property.tag', string="tags")
+
+    offer_ids = fields.One2many(
+        comodel_name='estate.property.offer',
+        inverse_name='property_id',
+        string='Offers',
+    )

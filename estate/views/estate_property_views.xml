@@ -56,6 +56,19 @@
                                 <field name="buyer_id"/>
                             </group>
                         </page>
+                        
+                        <page string="Offers">
+                            <field name="offer_ids" widget="section_and_note_one2many">
+                                <tree string="Registered Offers" editable="bottom">
+                                    <control>
+                                        <create name="add_offer_control" string="Add a Offer"/>
+                                    </control>
+                                    <field name="price"/>
+                                    <field name="status"/>
+                                    <field name="partner_id"/>
+                                </tree>
+                            </field>
+                        </page>
 
 
                     </notebook>
@@ -153,6 +166,47 @@
             </tree>
         </field>
     </record>
+
+
+     <record id="estate_property_offer_view_form" model="ir.ui.view">
+        <field name="name">estate.property.offer.view.form</field>
+        <field name="model">estate.property.offer</field>
+        <field name="arch" type="xml">
+            <form string="Property Offers">
+                <sheet>
+                    <group>
+                         <field name="price"/>
+                        <field name="status"/>
+                        <field name="partner_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="estate_property_offer_view_tree" model="ir.ui.view">
+        <field name="name">estate.property.offer.view.tree</field>
+        <field name="model">estate.property.offer</field>
+        <field name="arch" type="xml">
+            <tree string="Property Offers">
+                <field name="price"/>
+                <field name="status"/>
+                <field name="partner_id"/>
+                <field name="property_id"/>
+            </tree>
+        </field>
+    </record>
+
+
+     <record id="property_offer_action" model="ir.actions.act_window">
+        <field name="name">Property Offers</field>
+        <field name="res_model">estate.property.offer</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create your first Property Offer
+            </p>
+        </field>
+    </record>    
 
 
      <record id="property_tag_action" model="ir.actions.act_window">
