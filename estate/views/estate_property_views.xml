@@ -24,6 +24,7 @@
                     <!---->
                 </header>
                 <sheet>
+                   
                     <group>
                         <field name="name"/>
                         <field name="property_tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_edit_color': true}"/>
@@ -138,6 +139,14 @@
         <field name="arch" type="xml">
             <form string="Property Types">
                 <sheet>
+                     <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="object" invisible="offers_count == 0"
+                            name="action_view_offers" icon="fa-money">
+                            <div class="o_field_widget o_stat_info">
+                                <field name="offers_count" widget="statinfo" string="Offers"/>
+                            </div>
+                        </button>
+                    </div>
                     <group>
                         <field name="name"/>
                     </group>
