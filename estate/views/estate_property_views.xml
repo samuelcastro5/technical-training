@@ -14,15 +14,24 @@
         <field name="arch" type="xml">
             <form string="Properties">
                 <sheet>
-                    <group col="2">
+                    <group>
                         <field name="name"/>
-                        <field name="description"/>
                     </group>
+                    <group>
+                        <group>
+                            <field name="postcode"/>
+                            <field name="available_date"/>
+                        </group>
+                        <group>
+                            
+                            <field name="expected_price"/>
+                            <field name="selling_price"/>
+                        </group>
+                    </group>
+
                     <group col="4">
-                        <field name="postcode"/>
-                        <field name="available_date"/>
-                        <field name="expected_price"/>
-                        <field name="selling_price"/>
+                    
+                        <field name="description"/>
                         <field name="beedrooms"/>
                         <field name="living_area"/>
                         <field name="facades"/>
