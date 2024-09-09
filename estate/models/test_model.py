@@ -1,4 +1,4 @@
-from odoo import models,fields
+from odoo import models,fields,api
 
 class TestModel(models.Model):
     _name = "test.model"
@@ -91,3 +91,26 @@ class TestModel(models.Model):
         inverse_name='property_id',
         string='Offers',
     )
+    best_offer = fields.Float(
+        string='Best Offer', 
+        compute='_get_best_offer',  
+        default=0.00,
+    )
+    total_area = fields.Integer(
+       string="Total Area (sqm)",
+       default=0,
+       compute='_get_total_area',  
+    )
+
+    @api.depends('living_area','garden_area')
+    def _get_total_area(self):
+        for rec in self:
+            rec.total_area = rec.living_area + rec.garden_area
+
+
+    @api.depends('offer_ids')
+    def _get_best_offer(self):
+        for rec in self:
+            for r in rec.offer_ids.sorted(key=lambda r: (r.price)):
+                rec.best_offer = r.price
+                break

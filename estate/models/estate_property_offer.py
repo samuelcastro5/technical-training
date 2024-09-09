@@ -14,7 +14,6 @@ class EstatePropertyOffer(models.Model):
             ('refused', "Refused"),
         ],
         string="Status", 
-        default='accepted',
         copy=False,
     )
 
