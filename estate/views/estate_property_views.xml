@@ -29,18 +29,20 @@
                         </group>
                     </group>
 
-                    <group col="4">
-                    
-                        <field name="description"/>
-                        <field name="beedrooms"/>
-                        <field name="living_area"/>
-                        <field name="facades"/>
-                        <field name="garage"/>
-                        <field name="garden"/>
-                        <field name="garden_area"/>
-                        <field name="active"/>
-                        <field name="status"/>
-                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description"/>
+                            <field name="beedrooms"/>
+                            <field name="living_area"/>
+                            <field name="facades"/>
+                            <field name="garage"/>
+                            <field name="garden"/>
+                            <field name="garden_area"/>
+                            <field name="active"/>
+                            <field name="status"/>
+                            <field name="garden_orientation"/>
+                        </page>
+                    </noteboo>
                 </sheet>
             </form>
         </field>

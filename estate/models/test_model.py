@@ -67,3 +67,15 @@ class TestModel(models.Model):
         copy=False,
         required=True,
     )
+    garden_orientation = fields.Selection(
+        selection=[
+            ('north', "Norte"),
+            ('south', "South"),
+            ('east', "East"),
+            ('west', "West"),
+        ],
+        string="Status", 
+        default='new',
+        copy=False,
+        required=True,
+    )
