@@ -41,9 +41,8 @@ class EstatePropertyOffer(models.Model):
 
     def action_confirm(self):
         self.ensure_one()
-    
-    def action_set_done(self):
-        self.ensure_one()
+        self.status = "accepted"
     
     def action_cancel(self):
         self.ensure_one()
+        self.status="refused"
