@@ -159,5 +159,5 @@ class TestModel(models.Model):
     def _check_selling_price(self):
         for record in self:
             percentage = record.selling_price * 90 / 100
-            if percentage < record.expected_price:
+            if percentage > record.expected_price:
                 raise ValidationError("The selling price cannot be lower than 90 percentage of the expected price.")
