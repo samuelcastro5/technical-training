@@ -48,6 +48,14 @@
                                 <field name="garden_orientation"/>
                             </group>
                         </page>
+                        <page string="Other info">
+                            <group>
+                                <field name="salesman_id"/>
+                                <field name="buyer_id"/>
+                            </group>
+                        </page>
+
+
                     </notebook>
                 </sheet>
             </form>

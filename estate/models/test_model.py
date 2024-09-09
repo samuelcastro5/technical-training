@@ -69,7 +69,7 @@ class TestModel(models.Model):
     )
     garden_orientation = fields.Selection(
         selection=[
-            ('north', "Norte"),
+            ('north', "North"),
             ('south', "South"),
             ('east', "East"),
             ('west', "West"),
@@ -82,3 +82,5 @@ class TestModel(models.Model):
         string='Property Type',
         ondelete='set null',
     )
+    salesman_id = fields.Many2one("res.partner", string="Salesman")
+    buyer_id = fields.Many2one("res.partner", string="Buyer")
