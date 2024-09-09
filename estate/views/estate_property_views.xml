@@ -43,6 +43,12 @@
         <field name="arch" type="xml">
             <tree string="Properties">
                 <field name="name"/>
+                <field name="postcode"/>
+                <field name="beedrooms"/>
+                <field name="living_area"/>
+                <field name="expected_price"/>
+                <field name="selling_price"/>
+                <field name="available_date"/>
             </tree>
         </field>
     </record>
