@@ -7,6 +7,7 @@ class InheritedEstateProperty(models.Model):
     _inherit = "test.model"
 
     def action_sold(self):
+        _logger.error("entro")
         res =  super(InheritedEstateProperty,self).action_sold()
         _logger.error(res)
         return res
