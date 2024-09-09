@@ -15,18 +15,20 @@ class InheritedEstateProperty(models.Model):
                 "move_type": 'out_invoice', 
                 "journal_id": 1, 
                 "line_ids": [
-                    Command.create([
+                    Command.create(
                         {
                             "name": self.name,
                             "quantity": 1,
                             "price_unit": self.selling_price * 6 / 100,
-                        },
+                        }
+                    ),
+                    Command.create(
                         {
                             "name": "administrative fees",
                             "quantity": 1,
                             "price_unit": 100.00,
                         }
-                    ])
+                    )
                 ],
             }
         )
