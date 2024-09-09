@@ -50,6 +50,7 @@ class EstatePropertyOffer(models.Model):
         self.status = "accepted"
         self.property_id.buyer_id = self.partner_id.id
         self.property_id.selling_price = self.price
+        self.property_id.status = "offer_accepted"
         
 
     
