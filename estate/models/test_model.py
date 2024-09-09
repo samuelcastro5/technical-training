@@ -76,3 +76,9 @@ class TestModel(models.Model):
         ],
         string="Garden Orientation", 
     )
+
+    property_type_id = fields.Many2one(
+        comodel_name='estate.property.type',
+        string='Property Type',
+        ondelete='set null',
+    )
