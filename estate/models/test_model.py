@@ -74,8 +74,5 @@ class TestModel(models.Model):
             ('east', "East"),
             ('west', "West"),
         ],
-        string="Status", 
-        default='new',
-        copy=False,
-        required=True,
+        string="Garden Orientation", 
     )
