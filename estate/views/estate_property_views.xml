@@ -230,9 +230,9 @@
         <field name="name">estate.property.offer.view.tree</field>
         <field name="model">estate.property.offer</field>
         <field name="arch" type="xml">
-            <tree string="Property Offers">
+            <tree string="Property Offers" decoration-success="status == 'accepted'" decoration-danger="status == 'refused'">
                 <field name="price"/>
-                <field name="status"/>
+                <field name="status" invisible="1"  column_invisible="True"/>
                 <field name="partner_id"/>
                 <field name="property_id"/>
             </tree>
