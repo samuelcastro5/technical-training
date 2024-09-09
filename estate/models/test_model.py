@@ -115,6 +115,20 @@ class TestModel(models.Model):
     @api.depends('offer_ids')
     def _get_best_offer(self):
         for rec in self:
-            for r in rec.offer_ids.sorted(key=lambda r: (r.price), reverse=True):
-                rec.best_offer = r.price
-                break
+            if rec.offer_ids:
+                for r in rec.offer_ids.sorted(key=lambda r: (r.price), reverse=True):
+                    rec.best_offer = r.price
+                    break
+            else:
+                rec.best_offer = 0.00
+    
+
+    @api.onchange('garden')
+    def onchange_garden(self):
+        for rec in self:
+            if rec.garden:
+                rec.garden_orientation = 'north'
+                rec.garden_area = 10
+            else:
+                rec.garden_orientation = None
+                rec.garden_area = 0

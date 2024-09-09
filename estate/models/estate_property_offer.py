@@ -29,7 +29,7 @@ class EstatePropertyOffer(models.Model):
     )
 
     date_deadline = fields.Date(
-        string='Validity (Days)',  
+        string='Deadline',  
         default= date.today(),
         compute='_get_date_deadline',  
     )
