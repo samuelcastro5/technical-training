@@ -42,7 +42,7 @@
                             <field name="status"/>
                             <field name="garden_orientation"/>
                         </page>
-                    </noteboo>
+                    </notebook>
                 </sheet>
             </form>
         </field>
