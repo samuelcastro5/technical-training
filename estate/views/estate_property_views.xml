@@ -67,7 +67,7 @@
                         
                         <page string="Offers">
                             <field name="offer_ids" readonly="status in ['offer_accepted', 'sold','cancelled']" widget="section_and_note_one2many">
-                                <tree string="Registered Offers" readonly="status in ['offer_accepted', 'sold','cancelled']" editable="bottom">
+                                <tree string="Registered Offers" decoration-success="status == 'accepted'" decoration-danger="status == 'refused'" editable="bottom">
                                     <control>
                                         <create name="add_offer_control" string="Add a Offer"/>
                                     </control>
@@ -93,7 +93,7 @@
         <field name="name">properties.view.tree</field>
         <field name="model">test.model</field>
         <field name="arch" type="xml">
-            <tree string="Properties">
+            <tree string="Properties" decoration-success="status in ['offer_received','offer_accepted']"  decoration-bf="status == 'offer_accepted'" decoration-muted="status == 'sold'">
                 <field name="name"/>
                 <field name="property_type_id"/>
                 <field name="postcode"/>
@@ -102,7 +102,7 @@
                 <field name="living_area"/>
                 <field name="expected_price"/>
                 <field name="selling_price"/>
-                <field name="available_date"/>
+                <field name="available_date" optional="hide"/>
             </tree>
         </field>
     </record>
