@@ -82,5 +82,5 @@ class TestModel(models.Model):
         string='Property Type',
         ondelete='set null',
     )
-    salesman_id = fields.Many2one("res.partner", string="Salesman")
+    salesman_id = fields.Many2one("res.users", string="Salesman")
     buyer_id = fields.Many2one("res.partner", string="Buyer")
