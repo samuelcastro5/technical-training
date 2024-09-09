@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<odoo>
+    <menuitem 
+        id="menu_real_estate" 
+        name="Real Estate"/>
+
+    
+    <menuitem id="menu_advertisements" name="Advertisements"
+            parent="menu_real_estate" sequence="1"/>
+
+     <record id="properties_view_form" model="ir.ui.view">
+        <field name="name">properties.view.form</field>
+        <field name="model">test.model</field>
+        <field name="arch" type="xml">
+            <form string="Properties">
+                <sheet>
+                    <group col="2">
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="properties_view_tree" model="ir.ui.view">
+        <field name="name">properties.view.tree</field>
+        <field name="model">test.model</field>
+        <field name="arch" type="xml">
+            <tree string="Properties">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="properties_action" model="ir.actions.act_window">
+        <field name="name">Properties</field>
+        <field name="res_model">test.model</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create your first Properties
+            </p>
+        </field>
+    </record>
+
+    
+    <menuitem id="menu_properties_option" name="Properties"
+            parent="menu_advertisements"
+            action="properties_action" sequence="1"/>            
+</odoo>
