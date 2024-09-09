@@ -155,8 +155,6 @@ class TestModel(models.Model):
     def action_sold(self):
         self.ensure_one()
         self.status='sold'
-        _logger.error("enras")
-
 
     
     @api.constrains('selling_price')
