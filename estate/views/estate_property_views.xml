@@ -66,8 +66,8 @@
                         </page>
                         
                         <page string="Offers">
-                            <field name="offer_ids" readonly="parent.status in ['offer_accepted', 'sold','cancelled']" widget="section_and_note_one2many">
-                                <tree string="Registered Offers" readonly="parent.status in ['offer_accepted', 'sold','cancelled']" editable="bottom">
+                            <field name="offer_ids" readonly="status in ['offer_accepted', 'sold','cancelled']" widget="section_and_note_one2many">
+                                <tree string="Registered Offers" readonly="status in ['offer_accepted', 'sold','cancelled']" editable="bottom">
                                     <control>
                                         <create name="add_offer_control" string="Add a Offer"/>
                                     </control>
