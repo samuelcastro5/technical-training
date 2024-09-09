@@ -18,7 +18,6 @@ class TestModel(models.Model):
     )
     available_date = fields.Date(
        string="Available From",
-       default = date.today() + timedelta(months=3),
        copy=False,
     )
     expected_price = fields.Float(
