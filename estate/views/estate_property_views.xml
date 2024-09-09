@@ -108,7 +108,7 @@
         <field name="name">estate.property.type.view.form</field>
         <field name="model">estate.property.type</field>
         <field name="arch" type="xml">
-            <form string="Properties">
+            <form string="Property Types">
                 <sheet>
                     <group>
                         <field name="name"/>
@@ -130,8 +130,43 @@
 
 
 
+    <record id="estate_property_tag_view_form" model="ir.ui.view">
+        <field name="name">estate.property.tag.view.form</field>
+        <field name="model">estate.property.tag</field>
+        <field name="arch" type="xml">
+            <form string="Properties Tags">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="estate_property_tag_view_tree" model="ir.ui.view">
+        <field name="name">estate.property.tag.view.tree</field>
+        <field name="model">estate.property.tag</field>
+        <field name="arch" type="xml">
+            <tree string="Property Tags">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
 
 
+     <record id="property_tag_action" model="ir.actions.act_window">
+        <field name="name">Property Tags</field>
+        <field name="res_model">estate.property.tag</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create your first Property Tag
+            </p>
+        </field>
+    </record>    
+    <menuitem id="menu_property_tag_option" name="Property Tag"
+            parent="menu_settings"
+            action="property_tag_action" sequence="2"/>  
 
 
      <record id="property_type_action" model="ir.actions.act_window">
@@ -147,6 +182,8 @@
             parent="menu_settings"
             action="property_type_action" sequence="1"/>  
     
+
+
     <record id="properties_action" model="ir.actions.act_window">
         <field name="name">Properties</field>
         <field name="res_model">test.model</field>
