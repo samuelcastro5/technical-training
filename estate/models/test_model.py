@@ -1,9 +1,19 @@
 from datetime import datetime, date, timedelta
 from odoo import models,fields,api
+from odoo.exceptions import ValidationError
 
 class TestModel(models.Model):
     _name = "test.model"
     _description = "Test Model"
+
+    _sql_constraints = [
+        ('expected_price_check_zero',
+         'CHECK(expected_price >= 0)',
+         "A property expected price must be strictly positive"),
+        ('selling_price_check_zero',
+         'CHECK(selling_price >= 0)',
+         "A property selling price must be positive"),
+    ]
 
     name = fields.Char(
         string='Title',  
@@ -141,3 +151,12 @@ class TestModel(models.Model):
     def action_sold(self):
         self.ensure_one()
         self.status='sold'
+
+
+    
+    @api.constrains('selling_price')
+    def _check_selling_price(self):
+        for record in self:
+            percentage = record.selling_price * 90 / 100
+            if percentage < record.expected_price:
+                raise ValidationError("The selling price cannot be lower than 90 percentage of the expected price.")

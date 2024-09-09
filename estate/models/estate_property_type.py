@@ -4,6 +4,12 @@ class EstatePropertyType(models.Model):
     _name = "estate.property.type"
     _description = "the property type: house, apartment, penthouse, castle"
 
+    _sql_constraints = [
+        ('estate_name_ptype',
+         'UNIQUE(name)',
+         "There is already a property type with this name"),
+    ]
+
     name = fields.Char(
         string='Name',  
         required=True,

@@ -5,6 +5,12 @@ class EstatePropertyOffer(models.Model):
     _name = "estate.property.offer"
     _description = "A property offer is an amount a potential buyer offers to the seller."
 
+    _sql_constraints = [
+        ('offer_price_check_zero',
+         'CHECK(price >= 0)',
+         "An offer price must be strictly positive")
+    ]
+
     price = fields.Float(
         string='Price',  
         default=0.00,
