@@ -11,7 +11,7 @@ class InheritedEstateProperty(models.Model):
 
         self.env['account.move'].create(
             {
-                "partner_id": self.buyer_id, 
+                "partner_id": self.buyer_id.id, 
                 "move_type": 'out_invoice', 
                 "journal_id": 1, 
                 "line_ids": [
