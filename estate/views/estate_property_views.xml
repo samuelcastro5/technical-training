@@ -17,6 +17,12 @@
         <field name="model">test.model</field>
         <field name="arch" type="xml">
             <form string="Properties">
+                <header>
+                    <field name="status" invisible="1"/>
+                    <button name="action_sold" type="object" string="SOLD" invisible="status == 'sold' or status == 'cancelled'"/>
+                    <button name="action_cancel" type="object" string="CANCEL" invisible="status == 'cancelled'"/>
+                    <!---->
+                </header>
                 <sheet>
                     <group>
                         <field name="name"/>

@@ -132,3 +132,12 @@ class TestModel(models.Model):
             else:
                 rec.garden_orientation = None
                 rec.garden_area = 0
+    
+    def action_cancel(self):
+        self.ensure_one()
+        self.status='cancelled'
+    
+    
+    def action_sold(self):
+        self.ensure_one()
+        self.status='sold'
