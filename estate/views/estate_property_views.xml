@@ -18,7 +18,7 @@
         <field name="arch" type="xml">
             <form string="Properties">
                 <header>
-                    <field name="status" invisible="1"/>
+                    <field name="status" widget="statusbar"/>
                     <button name="action_sold" type="object" string="SOLD" invisible="status == 'sold' or status == 'cancelled'"/>
                     <button name="action_cancel" type="object" string="CANCEL" invisible="status == 'cancelled'"/>
                     <!---->
@@ -26,11 +26,10 @@
                 <sheet>
                     <group>
                         <field name="name"/>
-                        <field name="property_tag_ids" widget="many2many_tags"/>
+                        <field name="property_tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_edit_color': true}"/>
                     </group>
                     <group>
                         <group>
-                            <field name="status"/>
                             <field name="property_type_id"/>
                             <field name="postcode"/>
                             <field name="available_date"/>
@@ -144,7 +143,7 @@
                         
                         <page string="Properties">
                             <field name="property_ids">
-                                <tree string="Registered Properties" create="False">
+                                <tree string="Registered Properties" create="False" edit="False">
                                     <field name="name"/>
                                     <field name="expected_price"/>
                                     <field name="status"/>
@@ -164,6 +163,7 @@
         <field name="model">estate.property.type</field>
         <field name="arch" type="xml">
             <tree string="Property Types">
+                <field name="sequence" widget="handle"/>
                 <field name="name"/>
             </tree>
         </field>

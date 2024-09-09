@@ -3,7 +3,7 @@ from odoo import models,fields
 class EstatePropertyType(models.Model):
     _name = "estate.property.type"
     _description = "the property type: house, apartment, penthouse, castle"
-
+    _order = "sequence asc"
     _sql_constraints = [
         ('estate_name_ptype',
          'UNIQUE(name)',
@@ -19,3 +19,4 @@ class EstatePropertyType(models.Model):
         inverse_name='property_type_id',
         string='Properties',
     )
+    sequence = fields.Integer(string='Sequence', default=10)

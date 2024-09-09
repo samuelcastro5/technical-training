@@ -4,7 +4,7 @@ from datetime import datetime, date, timedelta
 class EstatePropertyOffer(models.Model):
     _name = "estate.property.offer"
     _description = "A property offer is an amount a potential buyer offers to the seller."
-
+    _order = "price desc"
     _sql_constraints = [
         ('offer_price_check_zero',
          'CHECK(price >= 0)',

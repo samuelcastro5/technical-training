@@ -5,6 +5,7 @@ from odoo.exceptions import ValidationError
 class TestModel(models.Model):
     _name = "test.model"
     _description = "Test Model"
+    _order = "id desc"
 
     _sql_constraints = [
         ('expected_price_check_zero',
