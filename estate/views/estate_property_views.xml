@@ -39,6 +39,7 @@
                                         </t>
                                     </div>
                                     <div>
+                                        <span class="o_text_overflow" t-esc="record.status.value"/>
                                         <t t-if="record.status.value in ['offer_received']">
                                              <span>Best Offer: </span> <span class="o_text_overflow" t-esc="record.best_offer.value"/>
                                         </t>
