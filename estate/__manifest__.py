@@ -9,7 +9,7 @@
 
         #Views
         'views/estate_property_views.xml',
-        'res_users_view.xml',
+        'views/res_users_view.xml',
 
     ],
     "installable": True,
