@@ -54,7 +54,7 @@ class EstatePropertyOffer(models.Model):
         for record in self:
             finish_date = record.create_date if record.id else date.today()
             _logger.error(record.date_deadline - finish_date.date())
-            record.validity = record.date_deadline - finish_date.date()
+            record.validity = (record.date_deadline - finish_date.date()).days
 
 
     def action_confirm(self):
