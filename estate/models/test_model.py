@@ -165,8 +165,13 @@ class TestModel(models.Model):
 
     def write(self, values):
         _logger.error("entro write")
-        _logger.error(values)
-        _logger.error(self.offer_ids)
+        if 'offer_ids' in values:
+            offers = values["offer_ids"]
+            for offer in offers:
+                data = offer[2]
+                for v in self.offer_ids
+                    if v.price > float(data["price"]):
+                        raise ValidationError("It is not possible to create an offer with a lower price than an existing offer.")    
         res = super(TestModel, self).write(values)
         return res
     
