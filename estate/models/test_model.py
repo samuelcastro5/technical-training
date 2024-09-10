@@ -1,4 +1,5 @@
 from datetime import datetime, date, timedelta
+from dateutil.relativedelta import relativedelta
 from odoo import models,fields,api
 from odoo.exceptions import ValidationError
 from logging import getLogger
@@ -33,6 +34,7 @@ class TestModel(models.Model):
     available_date = fields.Date(
        string="Available From",
        copy=False,
+       default= date.today() + relativedelta(months=3),
     )
     expected_price = fields.Float(
        string= "Expected Price",
