@@ -150,10 +150,14 @@ class TestModel(models.Model):
     @api.onchange('offer_ids')
     def onchange_offer_ids(self):
         for rec in self:
+            _logger.error("entro")
             if len(rec.offer_ids) > 0:
+                _logger.error("entro len")
                 new_data = rec.offer_ids.filtered(lambda doc: not doc.id)
                 if new_data:
+                    _logger.error("entro data")
                     for line in rec.offer_ids.filtered(lambda doc: doc.id):
+                        _logger.error(line)
                         if line.price > new_data.price:
                             new_data.unlink()
                             raise ValidationError("It is not possible to create an offer with a lower price than an existing offer.")
