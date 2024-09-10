@@ -186,6 +186,12 @@ class TestModel(models.Model):
         res = super(TestModel, self).write(values)
         return res
     
+
+    def unlink(self):
+        if self.status not in ['new', 'cancelled']:
+            raise ValidationError("It is not possible to delete a property which is not new or canceled.")
+        result = super(TestModel, self).unlink()
+        return result
     
     def action_cancel(self):
         self.ensure_one()
