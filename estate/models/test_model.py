@@ -162,6 +162,14 @@ class TestModel(models.Model):
         _logger.error(self.offer_ids)
         res = super(TestModel, self).create(values)
         return res
+
+    def write(self, values):
+        _logger.error("entro write")
+        _logger.error(values)
+        _logger.error(self.offer_ids)
+        res = super(TestModel, self).write(values)
+        return res
+    
     
     def action_cancel(self):
         self.ensure_one()
