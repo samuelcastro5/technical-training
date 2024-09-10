@@ -39,13 +39,13 @@
                                         </t>
                                     </div>
                                     <div>
-                                        <t t-if="record.status in ['offer_received']">
+                                        <t t-if="record.status.value in ['offer_received']">
                                              <span>Best Offer: </span> <span class="o_text_overflow" t-esc="record.best_offer.value"/>
                                         </t>
                                        
                                     </div>
                                     <div>
-                                        <t t-if="record.status in ['offer_accepted', 'sold']">
+                                        <t t-if="record.status.value in ['offer_accepted', 'sold']">
                                              <span>Selling Price: </span> <span class="o_text_overflow" t-esc="record.selling_price.value"/>
                                         </t>
                                     </div>
