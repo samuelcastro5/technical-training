@@ -38,14 +38,14 @@
                                              <span>Expected Price: </span> <span class="o_text_overflow" t-esc="record.expected_price.value"/>
                                         </t>
                                     </div>
-                                    <div>
-                                        <t t-if="record.status.value in ['Offer Received']">
+                                     <div>
+                                        <t t-if="record.status.value == 'Offer Received'">
                                              <span>Best Offer: </span> <span class="o_text_overflow" t-esc="record.best_offer.value"/>
                                         </t>
                                        
                                     </div>
                                     <div>
-                                        <t t-if="record.status.value in ['Offer Accepted', 'Sold']">
+                                        <t t-if="record.status.value == 'Offer Accepted' or record.status.value == 'Sold'">
                                              <span>Selling Price: </span> <span class="o_text_overflow" t-esc="record.selling_price.value"/>
                                         </t>
                                     </div>

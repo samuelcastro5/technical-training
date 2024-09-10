@@ -151,9 +151,17 @@ class TestModel(models.Model):
     def onchange_offer_ids(self):
         for rec in self:
             if len(rec.offer_ids) > 0:
-                rec.status="offer_received"
+                new_data = rec.offer_ids.filtered(lambda doc: not doc.id)
+                for line in rec.offer_ids.filtered(lambda doc: doc.id):
+                    if line.price > new_data.price:
+                        new_data.unlink()
+                        raise ValidationError("It is not possible to create an offer with a lower price than an existing offer.")
+                if len(rec.offer_ids) > 0:
+                    rec.status="offer_received"
             else:
                 rec.status="new"
+            
+
     
     def action_cancel(self):
         self.ensure_one()
