@@ -154,11 +154,13 @@ class TestModel(models.Model):
                     rec.status="offer_received"
             else:
                 rec.status="new"
+   
     @api.model_create_multi
-    def create(self, values_list):
-        _logger.error(values_list)
+    def create(self, values):
+        _logger.error("entro")
+        _logger.error(values)
         _logger.error(self.offer_ids)
-        res = super(TestModel, self).create(values_list)
+        res = super(TestModel, self).create(values)
         return res
     
     def action_cancel(self):
