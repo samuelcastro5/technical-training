@@ -8,7 +8,10 @@ class EstatePropertyOffer(models.Model):
     _sql_constraints = [
         ('offer_price_check_zero',
          'CHECK(price >= 0)',
-         "An offer price must be strictly positive")
+         "An offer price must be strictly positive"),
+         ('validity_check_zero',
+         'CHECK(validity >= 0)',
+         "A validity must be strictly positive")
     ]
 
     price = fields.Float(
@@ -38,12 +41,20 @@ class EstatePropertyOffer(models.Model):
         string='Deadline',  
         default= date.today(),
         compute='_get_date_deadline',  
+        inverse="_inverse_date_deadline"
     )
 
     @api.depends('validity')
     def _get_date_deadline(self):
         for rec in self:
-            rec.date_deadline =date.today() + timedelta(days=rec.validity)
+            rec.date_deadline = date.today() + timedelta(days=rec.validity) if not rec.id else rec.create_date + timedelta(days=rec.validity)
+
+    def _inverse_date_deadline(self):
+        for record in self:
+            finish_date = record.create_date if record.id else date.today()
+
+            record.validity = record.date_deadline - finish_date
+
 
     def action_confirm(self):
         self.ensure_one()
