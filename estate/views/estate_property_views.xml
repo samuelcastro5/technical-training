@@ -240,7 +240,7 @@
         <field name="name">estate.property.tag.view.form</field>
         <field name="model">estate.property.tag</field>
         <field name="arch" type="xml">
-            <form string="Properties Tags">
+            <form string="Properties Tags" editable="bottom" create="1" edit="1">
                 <sheet>
                     <group>
                         <field name="name"/>
