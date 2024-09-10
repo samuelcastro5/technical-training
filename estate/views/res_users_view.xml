@@ -9,7 +9,7 @@
         <field name="arch" type="xml">
             <page name="preferences" position="after">
                 <page string="Real Estate Properties">
-                    <field name="properties_ids" widget="many2many"  context="{'status': ['new','offer_received']}">
+                    <field name="properties_ids" widget="many2many"  domain="[('status','in', ['new','offer_received'])]">
                         <tree string="Real Estate Properties">
                             <field name="name"/>
                             <field name="property_type_id"/>
