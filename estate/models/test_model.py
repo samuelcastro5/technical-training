@@ -178,11 +178,11 @@ class TestModel(models.Model):
         if 'offer_ids' in values:
             offers = values["offer_ids"]
             for offer in offers:
-                _logger.error(offer)
-                data = offer[2]
-                for v in self.offer_ids:
-                    if v.price > float(data["price"]):
-                        raise ValidationError("It is not possible to create an offer with a lower price than an existing offer.")    
+                if 'price' in offer:
+                    data = offer[2]
+                    for v in self.offer_ids:
+                        if v.price > float(data["price"]):
+                            raise ValidationError("It is not possible to create an offer with a lower price than an existing offer.")    
         res = super(TestModel, self).write(values)
         return res
     
