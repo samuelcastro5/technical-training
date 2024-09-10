@@ -25,6 +25,7 @@
                     <field name="best_offer"/>
                     <field name="property_tag_ids"/>
                     <field name="selling_price"/>
+                    <field name="status"/>
                     <templates>
                         <t t-name="kanban-box">
                             <div class="oe_kanban_global_click oe_kanban_card d-flex flex-column">
@@ -34,14 +35,19 @@
                                     </div>
                                     <div class="o_kanban_record_subtitle">
                                         <t t-if="record.expected_price">
-                                            <field name="expected_price"/>
+                                             <span>Expected Price: </span> <span class="o_text_overflow" t-esc="record.expected_price.value"/>
                                         </t>
                                     </div>
                                     <div>
-                                        <span class="o_text_overflow" t-if="record.best_offer.value" t-esc="record.best_offer.value"/>
+                                        <t t-if="record.status in ['offer_received']">
+                                             <span>Best Offer: </span> <span class="o_text_overflow" t-esc="record.best_offer.value"/>
+                                        </t>
+                                       
                                     </div>
                                     <div>
-                                        <span class="o_text_overflow" t-if="record.selling_price.value" t-esc="record.selling_price.value"/>
+                                        <t t-if="record.status in ['offer_accepted', 'sold']">
+                                             <span>Selling Price: </span> <span class="o_text_overflow" t-esc="record.selling_price.value"/>
+                                        </t>
                                     </div>
                                     <div>
                                         <field name="property_tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>

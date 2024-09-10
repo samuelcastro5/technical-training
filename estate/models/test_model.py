@@ -147,6 +147,14 @@ class TestModel(models.Model):
                 rec.garden_orientation = None
                 rec.garden_area = 0
     
+    @api.onchange('offer_ids')
+    def onchange_offer_ids(self):
+        for rec in self:
+            if len(rec.offer_ids) > 0:
+                rec.status="offer_received"
+            else:
+                rec.status="new"
+    
     def action_cancel(self):
         self.ensure_one()
         self.status='cancelled'
