@@ -154,17 +154,25 @@ class TestModel(models.Model):
                     rec.status="offer_received"
             else:
                 rec.status="new"
-   
+    """
     @api.model_create_multi
     def create(self, values):
-        _logger.error("entro")
-        _logger.error(values)
-        _logger.error(self.offer_ids)
+        if 'offer_ids' in values:
+            before_offer = None
+            offers = values["offer_ids"]
+            for offer in offers:
+                data = offer[2]
+                if before_offer:
+                    if before_offer != float(data["price"]):
+                        raise ValidationError("It is not possible to create an offer with a lower price than an existing offer.")  
+                    if before_offer < float(data["price"]):
+                        before_offer = float(data["price"])
+                    before_offer = float(data["price"])
         res = super(TestModel, self).create(values)
         return res
+    """
 
     def write(self, values):
-        _logger.error("entro write")
         if 'offer_ids' in values:
             offers = values["offer_ids"]
             for offer in offers:
