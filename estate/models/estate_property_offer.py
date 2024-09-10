@@ -1,6 +1,7 @@
 from odoo import models,fields,api
 from datetime import datetime, date, timedelta
-
+from logging import getLogger
+_logger = getLogger(__name__)
 class EstatePropertyOffer(models.Model):
     _name = "estate.property.offer"
     _description = "A property offer is an amount a potential buyer offers to the seller."
@@ -52,7 +53,7 @@ class EstatePropertyOffer(models.Model):
     def _inverse_date_deadline(self):
         for record in self:
             finish_date = record.create_date if record.id else date.today()
-
+            _logger.error(record.date_deadline - finish_date.date())
             record.validity = record.date_deadline - finish_date.date()
 
 
