@@ -178,6 +178,7 @@ class TestModel(models.Model):
         if 'offer_ids' in values:
             offers = values["offer_ids"]
             for offer in offers:
+                _logger.error(offer)
                 data = offer[2]
                 for v in self.offer_ids:
                     if v.price > float(data["price"]):
