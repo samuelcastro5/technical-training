@@ -23,7 +23,7 @@
                     <field name="name"/>
                     <field name="expected_price"/>
                     <field name="best_offer"/>
-                    <field name="tag_ids"/>
+                    <field name="property_tag_ids"/>
                     <field name="selling_price"/>
                     <templates>
                         <t t-name="kanban-box">
