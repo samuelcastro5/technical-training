@@ -53,7 +53,7 @@ class EstatePropertyOffer(models.Model):
         for record in self:
             finish_date = record.create_date if record.id else date.today()
 
-            record.validity = record.date_deadline - finish_date.today()
+            record.validity = record.date_deadline - finish_date.date()
 
 
     def action_confirm(self):
